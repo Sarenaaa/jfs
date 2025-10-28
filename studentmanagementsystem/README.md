@@ -1,10 +1,9 @@
 ````markdown
-# Student Management System (Java + React)
+# Student Management System (Java + HTML/CSS)
 
 This is a minimal full-stack Student Management System:
 - Backend: Spring Boot + Spring Data JPA (H2 in-memory DB)
-- Frontend: React (Create React App style)
-
+- Frontend: HTML/CSS/JS
 ## How to run
 
 1. Backend
