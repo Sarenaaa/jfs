@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Student Management</h1>
+
+    <section class="form-section">
+      <h2 id="form-title">Add Student</h2>
+      <form id="student-form">
+        <input type="hidden" id="student-id" />
+        <div class="row">
+          <input id="firstName" placeholder="First name" required />
+          <input id="lastName" placeholder="Last name" required />
+        </div>
+        <div class="row">
+          <input id="email" type="email" placeholder="Email" required />
+          <input id="dob" type="date" placeholder="DOB" />
+        </div>
+        <div class="row">
+          <input id="major" placeholder="Major" />
+          <input id="gpa" type="number" step="0.01" min="0" max="4" placeholder="GPA" />
+        </div>
+        <div class="actions">
+          <button type="submit" id="submit-btn">Create</button>
+          <button type="button" id="cancel-btn" class="secondary hidden">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Students</h2>
+      <table id="students-table">
+        <thead>
+          <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Major</th><th>GPA</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="students-body">
+          <tr><td colspan="6" class="muted">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="note">
+      This frontend is served from Spring Boot static resources. It calls the backend at /api/students.
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
