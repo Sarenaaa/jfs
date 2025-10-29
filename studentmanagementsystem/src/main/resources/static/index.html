@@ -3,55 +3,123 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Student Management System</title>
+  <title>Student Management — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Student Management</h1>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <svg class="logo" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <rect x="3" y="3" width="18" height="18" rx="4" fill="#2DD4BF" />
+          <path d="M7 12h10M7 8h10M7 16h6" stroke="#052F46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="brand-text">
+          <span class="title">StudentMgmt</span>
+          <span class="subtitle">Admin dashboard</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a class="nav-item active">Dashboard</a>
+        <a class="nav-item">Students</a>
+        <a class="nav-item">Settings</a>
+      </nav>
+      <div class="sidebar-footer">v0.0.1 • Local</div>
+    </aside>
 
-    <section class="form-section">
-      <h2 id="form-title">Add Student</h2>
-      <form id="student-form">
-        <input type="hidden" id="student-id" />
-        <div class="row">
-          <input id="firstName" placeholder="First name" required />
-          <input id="lastName" placeholder="Last name" required />
-        </div>
-        <div class="row">
-          <input id="email" type="email" placeholder="Email" required />
-          <input id="dob" type="date" placeholder="DOB" />
-        </div>
-        <div class="row">
-          <input id="major" placeholder="Major" />
-          <input id="gpa" type="number" step="0.01" min="0" max="4" placeholder="GPA" />
+    <main class="main">
+      <header class="topbar">
+        <div class="search">
+          <input id="global-search" placeholder="Search students..." />
         </div>
         <div class="actions">
-          <button type="submit" id="submit-btn">Create</button>
-          <button type="button" id="cancel-btn" class="secondary hidden">Cancel</button>
+          <button class="btn ghost">Import</button>
+          <button class="btn">New Student</button>
         </div>
-      </form>
-    </section>
+      </header>
 
-    <section class="list-section">
-      <h2>Students</h2>
-      <table id="students-table">
-        <thead>
-          <tr>
-            <th>ID</th><th>Name</th><th>Email</th><th>Major</th><th>GPA</th><th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="students-body">
-          <tr><td colspan="6" class="muted">Loading...</td></tr>
-        </tbody>
-      </table>
-    </section>
+      <section class="content">
+        <div class="grid">
+          <section class="card form-card">
+            <h2 id="form-title">Add Student</h2>
+            <form id="student-form" class="form">
+              <input type="hidden" id="student-id" />
 
-    <footer class="note">
-      This frontend is served from Spring Boot static resources. It calls the backend at /api/students.
-    </footer>
+              <label class="field">
+                <span>First name</span>
+                <input id="firstName" placeholder="First name" required />
+              </label>
+
+              <label class="field">
+                <span>Last name</span>
+                <input id="lastName" placeholder="Last name" required />
+              </label>
+
+              <label class="field">
+                <span>Email</span>
+                <input id="email" type="email" placeholder="name@example.com" required />
+              </label>
+
+              <div class="row">
+                <label class="field half">
+                  <span>DOB</span>
+                  <input id="dob" type="date" />
+                </label>
+                <label class="field half">
+                  <span>GPA</span>
+                  <input id="gpa" type="number" step="0.01" min="0" max="4" placeholder="3.75" />
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Major</span>
+                <input id="major" placeholder="Computer Science" />
+              </label>
+
+              <div class="form-actions">
+                <button type="submit" id="submit-btn" class="btn primary">Create</button>
+                <button type="button" id="cancel-btn" class="btn ghost hidden">Cancel</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="card list-card">
+            <div class="list-head">
+              <h2>Students</h2>
+              <div class="list-meta">Showing <span id="count">0</span> students</div>
+            </div>
+
+            <div class="table-wrap">
+              <table id="students-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Major</th>
+                    <th>GPA</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="students-body">
+                  <tr><td colspan="6" class="muted">Loading…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <footer class="footer">© <span id="year"></span> Student Management</footer>
+    </main>
   </div>
 
   <script src="app.js"></script>
+  <script>
+    // small runtime values
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
